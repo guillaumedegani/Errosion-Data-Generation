@@ -1,1 +1,1 @@
-# Errosion-Data-Generation
+Pour le compilez faut **libnoise** et **glm**
