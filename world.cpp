@@ -11,7 +11,13 @@
 
 void World::generate(){
   std::cout<<"Generating New World"<<std::endl;
-  SEED = 1676609126;
+
+    /*
+	||																	                                                                ||
+	|| J'ai essayez de fixe la seed a 1676609126 car j'ai remarquez que elle plantez mais ca marche pas ||
+	|| @Guillaume																	                                                      ||
+	*/
+  SEED = time(NULL);
   std::cout<<"Seed: "<<SEED<<std::endl;
   //Seed the Random Generator
   srand(SEED);
@@ -57,6 +63,12 @@ glm::vec3 World::surfaceNormal(int i, int j){
   */
 
   glm::vec3 n = glm::vec3(0.15) * glm::normalize(glm::vec3(scale*(heightmap[i][j]-heightmap[i+1][j]), 1.0, 0.0));  //Positive X
+  
+  /*
+	||																	                        ||
+	|| Je suis un peut pret persuadez que c'est par la l'erreur ||
+	|| @Guillaume																	              ||
+	*/
   n += glm::vec3(0.15) * glm::normalize(glm::vec3(scale*(heightmap[i-1][j]-heightmap[i][j]), 1.0, 0.0));  //Negative X
   n += glm::vec3(0.15) * glm::normalize(glm::vec3(0.0, 1.0, scale*(heightmap[i][j]-heightmap[i][j+1])));    //Positive Y
   n += glm::vec3(0.15) * glm::normalize(glm::vec3(0.0, 1.0, scale*(heightmap[i][j-1]-heightmap[i][j])));  //Negative Y
